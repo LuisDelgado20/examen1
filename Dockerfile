@@ -1,3 +1,4 @@
-FROM amazoncorretto:17-alpine-jdk
-COPY --from=build /target/tabla9-0.0.1-SNAPSHOT.jar /app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+# Copiamos el JAR desde la etapa de compilación
+COPY --from=build /app/target/tabla9-0.0.1-SNAPSHOT.jar app.jar
